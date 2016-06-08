@@ -1,0 +1,27 @@
+[
+  {
+    "title": "Vendredi 9 juin",
+    "peoples": [
+      "Greg",
+      "Fab",
+      "Jerem"
+    ],
+    "scores": [
+      {
+        "Greg": -1
+      },
+      {
+        "Fab": -1,
+        "Greg": 1,
+        "Jerem": -1
+      },
+      {},
+      {
+        "par": 4,
+        "Fab": -1,
+        "Greg": 1,
+        "Jerem": -1
+      }
+    ]
+  }
+]
