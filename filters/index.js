@@ -51,8 +51,6 @@ module.filter('peoples', function () {
 module.filter('tourTotal', function () {
   return function (tour, name) {
 
-    console.log(tour);
-
     let scores = [];
 
     angular.forEach(tour, function (round) {
