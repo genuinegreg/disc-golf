@@ -1,37 +1,104 @@
-<h1>details</h1>
+<md-subheader class="md-primary">{{$ctrl.title}}</md-subheader>
 
 
-<div ng-repeat="round in $ctrl.tour">
+<md-content layout="row">
+    <md-card flex="50">
 
-    <table class="pure-table">
-        <thead>
-        <tr>
-            <td>Participant</td>
-            <td>Total</td>
-            <td ng-repeat="score in round.scores">#{{$index + 1}}</td>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="name in round.peoples">
-            <td>
-                {{name}}
-            </td>
-            <td>{{round.scores | total:name}}
-                <small>({{round.scores | totalToPar:name}})</small>
-            </td>
-            <td ng-repeat="score in round.scores">
-                {{(score.par || 3) + (score[name] || 0)}}
-                <small>(<span ng-if="(score[name] || 0) >= 0">+</span>{{score[name] || 0}})</small>
-            </td>
+        <md-card-header>
+            <md-card-header-text>
+                <span class="md-title">Recapitulatif</span>
+                <span class="md-subhead">plop</span>
+            </md-card-header-text>
+        </md-card-header>
 
-        </tr>
-        </tbody>
-        <thead>
-        <tr>
-            <td>Par</td>
-            <td>{{round.scores | coursePar}}</td>
-            <td ng-repeat="score in round.scores">{{score.par || 3}}</td>
-        </tr>
-        </thead>
-    </table>
-</div>
+        <table class="pure-table" style="width:100%; overflow-y: scroll">
+            <thead>
+            <tr>
+                <td>Participant</td>
+                <td>Total</td>
+                <td ng-repeat="round in $ctrl.tour">Round #{{$index + 1}}</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="name in $ctrl.tour | peoples ">
+                <td>
+                    {{name}}
+                </td>
+                <td>
+                    {{$ctrl.tour | tourTotal:name}}
+                    <!--<small>({{round.scores | totalToPar:name}})</small>-->
+                </td>
+                <td ng-repeat="round in $ctrl.tour">
+                    {{round.scores | total:name}}
+                    <small>({{round.scores | totalToPar:name}})</small>
+                </td>
+
+            </tr>
+            </tbody>
+            <thead>
+        </table>
+    </md-card>
+    <md-card flex="50">
+
+        <md-card-header>
+            <md-card-header-text>
+                <span class="md-title">Next Round</span>
+                <span class="md-subhead">plop</span>
+            </md-card-header-text>
+        </md-card-header>
+    </md-card>
+</md-content>
+
+<md-content layout="column" class="md-padding">
+
+    <md-card ng-repeat="round in $ctrl.tour">
+
+        <md-card-header>
+            <md-card-header-text>
+                <span class="md-title">Round #{{$index+1}} : {{round.title}}</span>
+                <span class="md-subhead">plop</span>
+            </md-card-header-text>
+        </md-card-header>
+
+        <table class="pure-table" style="width:100%; overflow-y: scroll">
+            <thead>
+            <tr>
+                <td>Participant</td>
+                <td>Total</td>
+                <td ng-repeat="score in round.scores">#{{$index + 1}}</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="name in round.peoples">
+                <td>
+                    {{name}}
+                </td>
+                <td>{{round.scores | total:name}}
+                    <small>({{round.scores | totalToPar:name}})</small>
+                </td>
+                <td ng-repeat="score in round.scores">
+
+                    <span ng-if="score.par === -1">X</span>
+                <span ng-if="score.par != -1">
+                    {{(score.par || 3) + (score[name] || 0)}}
+                    <small>(<span ng-if="(score[name] || 0) >= 0">+</span>{{score[name] || 0}})</small>
+                </span>
+
+
+                </td>
+
+            </tr>
+            </tbody>
+            <thead>
+            <tr>
+                <td>Par</td>
+                <td>{{round.scores | coursePar}}</td>
+                <td ng-repeat="score in round.scores">
+                    <span ng-if="score.par === -1">X</span>
+                    <span ng-if="score.par != -1">{{score.par || 3}}</span>
+                </td>
+            </tr>
+            </thead>
+        </table>
+    </md-card>
+</md-content>

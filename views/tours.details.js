@@ -9,8 +9,9 @@ export default module.name;
 module.config(function ($stateProvider) {
 
   class ToursDetailsViewController {
-    constructor (tour) {
+    constructor (tour, $state) {
       this.tour = tour;
+      this.title = $state.params.id;
     }
   }
 

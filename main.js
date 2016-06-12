@@ -14,41 +14,8 @@ const app = angular.module('discGolf', [
   components, views, services, filters
 ]);
 
-// app.config(function ($locationProvider) {
-//   console.log('gnégné !!!')
-//   $locationProvider.html5Mode(true);
-// });
-
-// app.service('Data', function ($resource) {
-//   return $resource('data/2016-06.json')
-// });
-//
-// app.controller('myController', function ($scope, Data) {
-//
-//   $scope.datas = Data.query();
-// });
-//
-// app.filter('total', function () {
-//   return function (scores, name) {
-//     return scores.reduce((prev, value) => {
-//       return prev + (value[ name ] || 0) + (value[ "par" ] || 3)
-//     }, 0);
-//   }
-// });
-// app.filter('totalToPar', function () {
-//   return function (scores, name) {
-//     const totalToPar = scores.reduce((prev, value) => {
-//       return prev + (value[ name ] || 0)
-//     }, 0);
-//
-//     return `${(totalToPar >= 0) ? '+' : ''}${totalToPar}`;
-//   }
-// });
-//
-// app.filter('coursePar', function () {
-//   return function (scores) {
-//     return scores.reduce((prev, value) => {
-//       return prev + (value[ "par" ] || 3)
-//     }, 0);
-//   }
-// });
+app.config(function ($mdThemingProvider) {
+  $mdThemingProvider.theme('default')
+    .primaryPalette('blue')
+    .accentPalette('orange');
+});

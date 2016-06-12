@@ -1,4 +1,14 @@
-<h1><a href="/">Tours</a></h1>
+<md-toolbar class="md-hue-2">
+    <div class="md-toolbar-tools">
+        <h2>
+            <a href="/">Disc golf Tours</a>
+        </h2>
+        <span flex></span>
+        <md-button class="md-icon-button md-raised" aria-label="Add">
+            <md-icon> add</md-icon>
+        </md-button>
+    </div>
+</md-toolbar>
 
 <ui-view>
     <md-content class="md-padding" layout-xs="column" layout="row" layout-wrap>
@@ -16,7 +26,7 @@
                     </md-card-title-media>
                 </md-card-title>
                 <md-card-actions layout="row" layout-align="end center">
-                    <md-button ui-sref="tours.details({id: tour.name})">View</md-button>
+                    <md-button class="md-raised md-primary" ui-sref="tours.details({id: tour.name})">View</md-button>
                 </md-card-actions>
             </md-card>
         </div>
