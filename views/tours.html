@@ -1,0 +1,24 @@
+<h1><a href="/">Tours</a></h1>
+
+<ui-view>
+    <md-content class="md-padding" layout-xs="column" layout="row" layout-wrap>
+        <div flex-xs flex-gt-xs="50"
+             ng-repeat="tour in $ctrl.tours">
+            <md-card>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">{{tour.name}}</span>
+                        <span class="md-subhead">{{tour.date | date:'medium'}} <br> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, laborum.</span>
+                    </md-card-title-text>
+                    <md-card-title-media>
+                        <div class="md-media-sm card-media">
+                        </div>
+                    </md-card-title-media>
+                </md-card-title>
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button ui-sref="tours.details({id: tour.name})">View</md-button>
+                </md-card-actions>
+            </md-card>
+        </div>
+    </md-content>
+</ui-view>

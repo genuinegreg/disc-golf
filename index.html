@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html ng-app="discGolf">
+<html>
 
 <head>
+
+    <base href="/">
+
     <meta charset="utf-8">
     <title>disc golf</title>
 
@@ -13,41 +16,14 @@
         System.import('main.js');
     </script>
 
+
 </head>
 
-<body ng-controller="myController">
-<div ng-repeat="data in datas">
-    <h1>{{data.title}}</h1>
-    <table class="pure-table">
-        <thead>
-        <tr>
-            <td>Participant</td>
-            <td>Total</td>
-            <td ng-repeat="score in data.scores">#{{$index + 1}}</td>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="name in data.peoples">
-            <td>
-                {{name}}
-            </td>
-            <td>{{data.scores | total:name}} <small>({{data.scores | totalToPar:name}})</small></td>
-            <td ng-repeat="score in data.scores">
-                {{(score.par || 3) + (score[name] || 0)}}
-                <small>(<span ng-if="(score[name] || 0) >= 0">+</span>{{score[name] || 0}})</small>
-            </td>
+<body ng-app="discGolf">
 
-        </tr>
-        </tbody>
-        <thead>
-        <tr>
-            <td>Par</td>
-            <td>{{data.scores | coursePar}}</td>
-            <td ng-repeat="score in data.scores">{{score.par || 3}}</td>
-        </tr>
-        </thead>
-    </table>
-</div>
+<ui-view></ui-view>
+
+
 </body>
 
 </html>

@@ -1,0 +1,37 @@
+<h1>details</h1>
+
+
+<div ng-repeat="round in $ctrl.tour">
+
+    <table class="pure-table">
+        <thead>
+        <tr>
+            <td>Participant</td>
+            <td>Total</td>
+            <td ng-repeat="score in round.scores">#{{$index + 1}}</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="name in round.peoples">
+            <td>
+                {{name}}
+            </td>
+            <td>{{round.scores | total:name}}
+                <small>({{round.scores | totalToPar:name}})</small>
+            </td>
+            <td ng-repeat="score in round.scores">
+                {{(score.par || 3) + (score[name] || 0)}}
+                <small>(<span ng-if="(score[name] || 0) >= 0">+</span>{{score[name] || 0}})</small>
+            </td>
+
+        </tr>
+        </tbody>
+        <thead>
+        <tr>
+            <td>Par</td>
+            <td>{{round.scores | coursePar}}</td>
+            <td ng-repeat="score in round.scores">{{score.par || 3}}</td>
+        </tr>
+        </thead>
+    </table>
+</div>
