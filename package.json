@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "http-server ./"
+    "start": "http-server ./",
+    "gh-pages": "./gh-pages.sh"
   },
   "author": "",
   "license": "ISC",
